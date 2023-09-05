@@ -1,0 +1,55 @@
+<div class="flex flex-col flex-auto w-[900px] -m-6 overflow-y-auto">
+    <!-- Header -->
+    <div class="flex flex-0 items-center justify-between h-16 pr-3 sm:pr-5 pl-6 sm:pl-8 bg-primary text-on-primary">
+      <div class="text-lg font-medium">Cadastro de Notícias</div>
+      <button mat-icon-button (click)="matDialogRef.close()" [tabIndex]="-1">
+        <mat-icon class="text-current" [svgIcon]="'heroicons_outline:x'"></mat-icon>
+      </button>
+    </div>
+  
+    <div class="overflow-auto w-full h-full mt-2">
+      <div class="w-full flex flex-col mb-4">
+        <div class="w-full">
+          <form enctype="multipart/form-data" (ngSubmit)="submitForm()" [formGroup]="noticiaForm">
+            <div class="bg-red-100 text-red-700 p-4 rounded mb-4" *ngIf="errors.length > 0">
+                <h3 id="msgRetorno" class="font-bold">Opa! Alguma coisa não deu certo:</h3>
+                <ul>
+                  <li *ngFor="let error of errors">{{ error }}</li>
+                </ul>
+              </div>
+              <div class="flex flex-wrap -mx-3 mb-6 ml-3 mr-3">
+                <div class="w-full md:w-1/2 px-3">
+                  <label class="block text-gray-700 font-bold mb-2" for="titulo">Título</label>
+                  <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="titulo" type="text" placeholder="Título (requerido)" formControlName="titulo" [ngClass]="{'border-red-500': displayMessage.titulo}">
+                  <span class="text-red-500" *ngIf="displayMessage.titulo">
+                    <p [innerHTML]="displayMessage.titulo"></p>
+                  </span>
+                </div>
+                <div class="w-full md:w-1/2 px-3">
+                  <label class="block text-gray-700 font-bold mb-2" for="autor">Autor</label>
+                  <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="autor" type="autor" placeholder="Autor (requerido)" formControlName="autor" [ngClass]="{'border-red-500': displayMessage.autor}">
+                  <span class="text-red-500" *ngIf="displayMessage.autor">
+                    <p [innerHTML]="displayMessage.autor"></p>
+                  </span>
+                </div>
+                <div class="w-full px-3">
+                    <label class="block text-gray-700 font-bold mb-2" for="descricao">Descrição</label>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="descricao" type="text" placeholder="Descrição (requerido)" formControlName="descricao" [ngClass]="{'border-red-500': displayMessage.descricao}">
+                    <span class="text-red-500" *ngIf="displayMessage.descricao">
+                      <p [innerHTML]="displayMessage.descricao"></p>
+                    </span>
+                </div>
+              </div>
+            <div class="flex flex-wrap justify-center items-center mt-4 mb-4">
+              <button type="submit" id="cadastroRtsp" [disabled]="!noticiaForm.valid" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">
+                Cadastrar
+              </button>
+              <a class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded" (click)="onHidden()">Voltar</a>
+            </div>
+          </form>
+        </div>
+  
+    </div>
+    </div>
+  </div>
+  
