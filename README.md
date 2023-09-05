@@ -6,5 +6,5 @@ Digite npm install para instalar as dependências
 ## Build
 Digite `ng build` para pegar os artefatos
 
-##Run
+## Run
 Digite `ng serve` para rodar o projeto
